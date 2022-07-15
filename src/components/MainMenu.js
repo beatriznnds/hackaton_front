@@ -3,10 +3,14 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import UserContext from '../contexts/UserContext';
+<<<<<<< HEAD
 import Note from './Note'
 import { mobile } from './Responsive';
 import Logo from "./../assets/icons8-notes-100.png";
 
+=======
+import Note from './Note';
+>>>>>>> master
 
 export default function MainMenu () {
     const [notes, setNotes] = useState([]);
@@ -48,6 +52,7 @@ export default function MainMenu () {
 
     return (
         <>
+<<<<<<< HEAD
       <Header>
       <Wrapper>
        <Left>
@@ -68,6 +73,16 @@ export default function MainMenu () {
         </Right>
         </Wrapper>
      </Header>
+=======
+       <Header>
+            <h2 onClick={() => navigate('/login')}>Login</h2>
+            <ion-icon name="log-in-outline" onClick={() => navigate('/login')}></ion-icon>
+            {
+                login ? <h2>Oi, { user }! </h2> : <h2>Bem-vinda(o)!</h2>
+            }   
+            <h2 onClick={() => navigate('/sign-up')}>Cadastro</h2>
+       </Header>
+>>>>>>> master
        <Container>
             <Notes>
             {
@@ -131,6 +146,7 @@ const Header=styled.div`
     margin-top: 50px;
     color: #000;
     font-size: 20px;
+<<<<<<< HEAD
     background: linear-gradient(
         rgba(255, 255, 255, 0.5),
         rgba(255, 255, 255, 0.5)
@@ -139,6 +155,10 @@ const Header=styled.div`
         center;
 background-size: cover;
 	
+=======
+    
+
+>>>>>>> master
     ion-icon {
         font-size: 60px;
     }
