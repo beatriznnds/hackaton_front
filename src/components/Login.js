@@ -5,12 +5,8 @@ import { Link,useNavigate } from "react-router-dom";
 import { mobile } from "./Responsive.js";
 import Logo from "./../assets/icons8-notes-100.png";
 import { useState,useContext } from "react";
-import UserContext from "../contexts/UserContext.js";
+import UserContext from "../contexts/UserContext";
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 146da98b8f4b50e87f4bdbd229918fe27abd800b
 const Login= () => {
 	const navigate = useNavigate();
 	const [email,setEmail] = useState('');
