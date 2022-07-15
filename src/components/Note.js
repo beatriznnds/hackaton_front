@@ -3,10 +3,12 @@ import styled from "styled-components";
 import axios from "axios";
 import UserContext from "../contexts/UserContext.js";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Note ({ name, description, date, setCurrentPage, pages}) {
     const {token} = useContext(UserContext);
     const id = 1;
+    const navigate = useNavigate();
 
     function deleteMarkdown(){
         const promise = axios.delete(`https://firsthackaton.herokuapp.com/notas/${id}`,{
@@ -45,13 +47,17 @@ export default function Note ({ name, description, date, setCurrentPage, pages})
         })
     }
 
+    function exampleMarkdown () {  
+        navigate('/example')        
+    }
+
     return (
         <Container>
             <Prev><ion-icon name="arrow-back-circle-outline" onClick={() => setCurrentPage(pages - 1)}></ion-icon></Prev>
-            <Note>
+            <Notes>
                 <div>
                     {name}
-                    dayjs({date}).format('DD/MM')
+                    dayjs.({date}).format('DD/MM')
                 </div>
                 <div>
                     {description}
@@ -61,13 +67,29 @@ export default function Note ({ name, description, date, setCurrentPage, pages})
                     <ion-icon name="create-outline" onClick={editMarkdown}></ion-icon>
                     <ion-icon name="trash-outline" onClick={deleteMarkdown}></ion-icon>
                 </div>
-            </Note>
+            </Notes>
             <Next><ion-icon name="arrow-forward-circle-outline" onClick={() => setCurrentPage(pages + 1)}></ion-icon></Next>
         </Container>
     )
 }
 
 const Container=styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+const Notes=styled.div`
+    display: flex;
+    flex-direction: column;
+
+    div {
+        display: flex;
+    }
+
+    ion-icon {
+        font-size: 30px;
+    }
 `
 
 const Prev=styled.div`

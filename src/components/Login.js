@@ -9,11 +9,6 @@ import Logo from "./../assets/icons8-notes-100.png";
 import { useState,useContext } from "react";
 import UserContext from "../contexts/UserContext.js";
 
-import { Link } from "react-router-dom";
-import { mobile } from "./Resnposive";
-
-import { useState } from "react";
-
 
 const Login= () => {
 	const navigate = useNavigate();

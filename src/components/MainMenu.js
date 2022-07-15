@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import UserContext from '../contexts/UserContext';
 import Note from './Note'
-import { mobile } from './Resnposive';
+import { mobile } from './Responsive';
 import Logo from "./../assets/icons8-notes-100.png";
 
 
@@ -68,6 +68,11 @@ export default function MainMenu () {
           <Nogo>WRITE IT!</Nogo>
         </Center>
         <Right>
+          <MenuItem>
+          {
+            login ? <h2>Oi, { user.name }! </h2> : <h2>Seja bem-vinda(o)!</h2>
+          } 
+          </MenuItem>
           <MenuItem onClick={() => navigate('/sign-up')}>REGISTER</MenuItem>
           <MenuItem onClick={() => navigate('/login')}>SIGN IN</MenuItem>
         </Right>
@@ -136,6 +141,7 @@ const Header=styled.div`
     margin-top: 50px;
     color: #000;
     font-size: 20px;
+    font-weight: bold;
     background: linear-gradient(
         rgba(255, 255, 255, 0.5),
         rgba(255, 255, 255, 0.5)
