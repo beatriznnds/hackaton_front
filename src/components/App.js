@@ -13,16 +13,20 @@ import Example from "./Example";
 
 export default function App() {
 
-  const [user, setUser] = useState(
-    localStorage.getItem('userdata')
-        ? JSON.parse(localStorage.getItem('userdata'))
-        : null
-  );
+  const [user, setUser] = useState('');
+  const [token,setToken] = useState('');
+
+  const userContext = {
+    user,
+    setUser,
+    token,
+    setToken
+  }
 
   return (
     
     <BrowserRouter>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={userContext}>
           <Routes>
             <Route path ='/login' element ={<Login />}/>
             <Route path='/sign-up' element={<Register />} />

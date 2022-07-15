@@ -3,19 +3,22 @@ import { useEffect, useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import UserContext from '../contexts/UserContext';
+<<<<<<< HEAD
 import Note from './Note'
 import { mobile } from './Responsive';
 import Logo from "./../assets/icons8-notes-100.png";
 
+=======
+import Note from './Note';
+>>>>>>> 146da98b8f4b50e87f4bdbd229918fe27abd800b
 
 export default function MainMenu () {
     const [notes, setNotes] = useState([]);
-    const { user,token } = useContext(UserContext);
+    const { user,token} = useContext(UserContext);
     const navigate = useNavigate();
     const [itensPerPage, setItensPerPage] = useState(2);
     const [currentPage, setCurrentPage] = useState(0);
     const [login, setLogin]  = useState(false);
-
 
 	useEffect(() => {
         if(token){
@@ -27,37 +30,25 @@ export default function MainMenu () {
                 Authorization: `Bearer ${token}`
             }
         });
+
         promise.then((res) => {
 	 	    setNotes(res.data);
 	 	});
-         promise.catch(Error => {
+
+        promise.catch(Error => {
              alert(Error.response.data.message)
-         })
+         });
+
 	}, []);
-
-    
-	// useEffect(() => {
-	// 	const promise = axios.get('https://firsthackaton.herokuapp.com/notas', {headers: {Authorization: `Bearer ${user.token}`}});
-    //     promise.then((res) => {
-	// 		setNotes(res.data);
-    //      setLogin(true)
-	// 	});
-    //     promise.catch((err) => {
-    //         alert('Algo deu errado! Tente novamente.')
-    //     })
-	// }, []);
-
 
     const pages = Math.ceil(notes.length / itensPerPage);
     const startIndex = currentPage * itensPerPage;
     const endIndex = startIndex + itensPerPage;
     const currentItens = notes.slice(startIndex, endIndex);
-    function goHome() {
-		navigate("/");
-	}
 
     return (
         <>
+<<<<<<< HEAD
       <Header>
       <Wrapper>
        <Left>
@@ -78,6 +69,16 @@ export default function MainMenu () {
         </Right>
         </Wrapper>
      </Header>
+=======
+       <Header>
+            <h2 onClick={() => navigate('/login')}>Login</h2>
+            <ion-icon name="log-in-outline" onClick={() => navigate('/login')}></ion-icon>
+            {
+                login ? <h2>Oi, { user }! </h2> : <h2>Bem-vinda(o)!</h2>
+            }   
+            <h2 onClick={() => navigate('/sign-up')}>Cadastro</h2>
+       </Header>
+>>>>>>> 146da98b8f4b50e87f4bdbd229918fe27abd800b
        <Container>
             <Notes>
             {
@@ -85,62 +86,24 @@ export default function MainMenu () {
                 : <h2>Você não possui nenhuma nota!</h2>
             }
             </Notes>
-        
        </Container>
        </>
     )
 }
-const Wrapper = styled.div`
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
-  ${mobile({ padding: "10px 0px" })}
-  img {
-    width: 75px;
-}
 
-`;
-const Left = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-`;
-
-
-const MenuItem = styled.div`
-  font-size: 14px;
-  cursor: pointer;
-  margin-left: 25px;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
-`;
-const Center = styled.div`
-  flex: 1;
-  text-align: center;
-  font-family: 'inspire';
-`;
-
-const Nogo = styled.h1`
-  font-weight: bold;
-  ${mobile({ fontSize: "24px" })}
-`;
-const Right = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  ${mobile({ flex: 2, justifyContent: "center" })}
-`;
 
 const Header=styled.div`
     width: 100%;
     height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     background-color: #B5D3E7;
     border-radius: 5px;
     margin-top: 50px;
     color: #000;
     font-size: 20px;
+<<<<<<< HEAD
     font-weight: bold;
     background: linear-gradient(
         rgba(255, 255, 255, 0.5),
@@ -150,6 +113,9 @@ const Header=styled.div`
         center;
 background-size: cover;
 	
+=======
+    
+>>>>>>> 146da98b8f4b50e87f4bdbd229918fe27abd800b
 
     ion-icon {
         font-size: 60px;
@@ -163,8 +129,7 @@ const Container=styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    
-  
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F000%2F402%2F828%2Foriginal%2Fvector-collection-of-sticky-note-illustrations.jpg&f=1&nofb=1");
 `
 
 
