@@ -32,12 +32,14 @@ const Register = () => {
 
 				
                 <Button type="submit">CREATE</Button>
-				
+			
          
 				
 			</Form>
             
-				    
+			<Link to="/login" style={{ textDecoration: "none" }}>
+					<Span>Já tem uma conta? Faça login!</Span>
+			</Link>
 		</AuthScreen>
         
 	);
@@ -75,9 +77,11 @@ const Input = styled.input`
 	padding: 10px;
 `;
 
-const Agreement = styled.span`
-	font-size: 12px;
-	margin: 20px 0px;
+const Span = styled.span`
+font-size: 12px;
+	color: black;
+	margin-top:15px;
+	font-family: 'Urbanist', sans-serif;
 `;
 
 const Button = styled.button`
@@ -89,7 +93,15 @@ const Button = styled.button`
 	cursor: pointer;
     margin-top:14px;
 `;
-
+const Cadastro = styled.p`
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    color: black;
+    text-decoration: underline;
+    
+`;
 
 
 export default Register;

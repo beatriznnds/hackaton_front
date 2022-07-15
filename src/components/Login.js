@@ -29,7 +29,10 @@ const Login= () => {
 					placeholder="Password"
 					
 				/>
-				<Button type="submit">LOGIN</Button>
+				 <Wrapper>
+				<Button1 type="submit">LOGIN</Button1>
+				<Button2 type="submit">SKIP</Button2>
+				</Wrapper>
 				<Link to="/sign-up" style={{ textDecoration: "none" }}>
 					<span>Não tem conta? Cadastre-se aqui!</span>
 				</Link>
@@ -63,6 +66,15 @@ const Wrapper = styled.div`
 	background-color: #B5D3E7;
 	align-items: center;
 	
+	${mobile({ width: "75%" })}
+`;
+const Wrapper2 = styled.div`
+	width: 40%;
+	padding: 20px;
+    border-radius: 1rem;
+	background-color: #B5D3E7;
+	align-items: center;
+	display:flex;
 	${mobile({ width: "75%" })}
 `;
 const Img = styled.img`
@@ -111,7 +123,7 @@ const Agreement = styled.span`
 	margin: 20px 0px;
 `;
 
-const Button = styled.button`
+const Button1= styled.button`
 	width: 40%;
 	border: none;
 	padding: 15px 20px;
@@ -119,8 +131,20 @@ const Button = styled.button`
 	color: white;
 	cursor: pointer;
     margin-top:14px;
+	
+	
 `;
-
+const Button2= styled.button`
+	width: 40%;
+	border: none;
+	padding: 15px 20px;
+	background-color: teal;
+	color: white;
+	cursor: pointer;
+    margin-top:14px;
+	margin-left:10px;
+	
+`;
 
 
 export default Login;
