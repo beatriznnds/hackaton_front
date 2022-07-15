@@ -1,13 +1,35 @@
 import styled from "styled-components";
+import axios from 'axios';
 import { ThreeDots } from 'react-loader-spinner';
 
 import { Link } from "react-router-dom";
 import { mobile } from "./Resnposive";
 import Logo from "./../assets/icons8-notes-100.png";
+import { useState } from "react";
 
 const Login= () => {
 
+	const [email,setEmail] = useState('');
+	const [password,setPassword] = useState('');
 
+	function signIn(event){
+		event.preventDefault();
+
+		const body = {
+			email,
+			password
+		}
+
+		const promise = axios.post('https://firsthackaton.herokuapp.com/sign-in',body);
+
+		promise.then(res=>{
+			// res.data recebe o token
+		});
+
+		promise.catch(Error=>{
+			alert(Error.response.data.message)
+		});
+	}
   
 	return (
 		<Container>
@@ -16,22 +38,26 @@ const Login= () => {
 		 
 			<Title>SIGN IN</Title>
 			
-			<Form >
+			<Form onSubmit={signIn}>
 				<Input
 					type="email"
 					name="email"
 					placeholder="E-mail"
-				
+					value={email}
+					onChange={e=>setEmail(e.target.value)}
+					required
 				/>
 				<Input
 					type="password"
 					name="password"
 					placeholder="Password"
-					
+					value={password}
+					onChange={e=>setPassword(e.target.value)}
+					required
 				/>
 				 <Wrapper>
 				<Button1 type="submit">LOGIN</Button1>
-				<Button2 type="submit">SKIP</Button2>
+				<Button2>SKIP</Button2>
 				</Wrapper>
 				<Link to="/sign-up" style={{ textDecoration: "none" }}>
 					<span>Não tem conta? Cadastre-se aqui!</span>

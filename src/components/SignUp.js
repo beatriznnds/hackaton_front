@@ -2,33 +2,69 @@ import styled from "styled-components";
 import { ThreeDots } from 'react-loader-spinner';
 import AuthScreen from "./AuthScreen";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
 
 const Register = () => {
+	const [name,setName] = useState('');
+	const [email,setEmail] = useState('');
+	const [password,setPassword] = useState('');
+	const [confirmPass,setConfirmPass] = useState('');
 
+	function signUp(event){
+		event.preventDefault();
 
+		const body = {
+			name,
+			email,
+			password,
+			confirmPass
+		}
+
+		const promise = axios.post('https://firsthackaton.herokuapp.com/sign-up',body);
+
+		promise.then(()=>{
+			alert('Cadastrado com sucesso!');
+		});
+
+		promise.catch(Error=>{
+			alert(Error.response.data.message);
+		})
+	}
   
 	return (
 		<AuthScreen>
 			<Title>CREATE AN ACCOUNT</Title>
-			<Form >
+			<Form onSubmit={signUp}>
 				<Input placeholder="Name"
 				 type="text"
+				 value={name}
+				 onChange={e=>setName(e.target.value)}
+				 required
                />
 
 				
 
 				<Input placeholder="E-mail" 
-				type="email"
-				
+					type="email"
+					value={email}
+					onChange={e=>setEmail(e.target.value)}
+					required
 				
 				 />
 				<Input placeholder="Password"
-				type="password"
+					type="password"
+					value={password}
+					onChange={e=>setPassword(e.target.value)}
+					required
 				
 				 />
 				<Input placeholder="Confirm password"
-				     type="password"
-					  />
+				    type="password"
+					value={confirmPass}
+				 	onChange={e=>setConfirmPass(e.target.value)}
+				 	required
+				/>
 
 				
                 <Button type="submit">CREATE</Button>
