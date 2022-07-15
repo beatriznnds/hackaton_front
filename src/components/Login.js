@@ -4,7 +4,7 @@ import { ThreeDots } from 'react-loader-spinner';
 
 import { Link } from "react-router-dom";
 import { mobile } from "./Resnposive";
-import Logo from "./../assets/icons8-notes-100.png";
+
 import { useState } from "react";
 
 const Login= () => {
