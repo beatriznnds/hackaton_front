@@ -28,8 +28,8 @@ const Register = () => {
 		});
 
 		promise.catch(Error=>{
-			alert(Error.response.data.message);
-		})
+			alert(Error.response.data.message)
+		});
 	}
   
 	return (
