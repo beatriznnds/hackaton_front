@@ -12,7 +12,7 @@ const Login= () => {
 	const navigate = useNavigate();
 	const [email,setEmail] = useState('');
 	const [password,setPassword] = useState('');
-	const { setToken } = useContext(UserContext);
+	const { setToken,setUser } = useContext(UserContext);
 
 	function signIn(event){
 		event.preventDefault();
@@ -25,7 +25,8 @@ const Login= () => {
 		const promise = axios.post('https://firsthackaton.herokuapp.com/sign-in',body);
 
 		promise.then(res=>{
-			setToken(res.data);
+			setUser(res.data.name);
+			setToken(res.data.token);
 			navigate('/');
 		});
 
