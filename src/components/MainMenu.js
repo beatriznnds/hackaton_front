@@ -10,11 +10,31 @@ import Logo from "./../assets/icons8-notes-100.png";
 
 export default function MainMenu () {
     const [notes, setNotes] = useState([]);
-    const { user } = useContext(UserContext);
+    const { user,token } = useContext(UserContext);
     const navigate = useNavigate();
     const [itensPerPage, setItensPerPage] = useState(2);
     const [currentPage, setCurrentPage] = useState(0);
     const [login, setLogin]  = useState(false);
+
+
+	useEffect(() => {
+        if(token){
+            setLogin(true);
+        }
+
+	    const promise = axios.get('https://firsthackaton.herokuapp.com/notas', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        promise.then((res) => {
+	 	    setNotes(res.data);
+	 	});
+         promise.catch(Error => {
+             alert(Error.response.data.message)
+         })
+	}, []);
+
     
 	// useEffect(() => {
 	// 	const promise = axios.get('https://firsthackaton.herokuapp.com/notas', {headers: {Authorization: `Bearer ${user.token}`}});
@@ -26,6 +46,7 @@ export default function MainMenu () {
     //         alert('Algo deu errado! Tente novamente.')
     //     })
 	// }, []);
+
 
     const pages = Math.ceil(notes.length / itensPerPage);
     const startIndex = currentPage * itensPerPage;
