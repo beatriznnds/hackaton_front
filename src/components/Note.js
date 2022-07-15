@@ -14,6 +14,11 @@ export default function Note ({ name, description, date, setCurrentPage, pages})
                 <div>
                     {description}
                 </div>
+                <div>
+                    <ion-icon name="help-circle-outline" onClick={exampleMarkdown}></ion-icon>
+                    <ion-icon name="create-outline" onClick={editMarkdown}></ion-icon>
+                    <ion-icon name="trash-outline" onClick={deleteMarkdown}></ion-icon>
+                </div>
             </Note>
             <Next><ion-icon name="arrow-forward-circle-outline" onClick={() => setCurrentPage(pages + 1)}></ion-icon></Next>
         </Container>
