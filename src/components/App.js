@@ -8,6 +8,7 @@ import Login from "./Login";
 import Register from "./SignUp";
 import MainMenu from "./MainMenu";
 import NewNote from "./NewNote";
+import Example from "./Example";
 
 
 export default function App() {
@@ -30,7 +31,8 @@ export default function App() {
             <Route path ='/login' element ={<Login />}/>
             <Route path='/sign-up' element={<Register />} />
             <Route path='/' element={ <MainMenu />} />
-            <Route path='/newnote' element={ < NewNote/>} />            
+            <Route path='/newnote' element={ < NewNote/>} />  
+            <Route path='/example' element={ < Example/>} />           
           </Routes>
       </UserContext.Provider>
     </BrowserRouter> 
